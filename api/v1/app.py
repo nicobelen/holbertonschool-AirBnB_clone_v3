@@ -20,14 +20,10 @@ if __name__ == '__main__':
 
     from os import getenv
 
-    host = getenv("HBNB_API_HOST")
-    port = getenv("HBNB_API_PORT")
+    host = getenv("HBNB_API_HOST", '0.0.0.0')
+    port = getenv("HBNB_API_PORT", '5000')
 
     app.run(debug=False)  # activar para que el servidor actualice los cambios
     app.run(threaded=True)
-
-    if host is None or port is None:
-        host = '0.0.0.0'
-        port = '5000'
 
     app.run(host=host, port=port)
