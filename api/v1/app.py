@@ -11,7 +11,8 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def calls_storage_close():
+def calls_storage_close(self):
+    """ closes the storage """
     storage.close()
 
 
