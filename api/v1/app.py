@@ -10,16 +10,24 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 #app_views = Blueprint(, '')
 
-@app.route()
-def index():
-    return
+
+@app.teardown_appcontext
+def calls_storage_close():
+    storage.close()
+
 
 if __name__ == '__main__':
+
     from os import getenv
     
-    host = getenv("HBNB_API_HOST") 
-    port = getenv("HBNB_API_PORT") 
-    app.run(debug=False)
+    host = getenv("HBNB_API_HOST")
+    port = getenv("HBNB_API_PORT")
+
+    app.run(debug=False) #activar para que el servidor actualice los cambios
     app.run(threaded=True)
-    app.run(host='0.0.0.0', port=5000)
-    app.run(host='0.0.0.0', port=5000)
+    
+    if host is None or port is None:
+        host = '0.0.0.0'
+        port = '5000'
+    
+    app.run(host=host, port=port)
