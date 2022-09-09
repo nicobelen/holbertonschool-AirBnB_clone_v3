@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" source code - api """
+""" source code - api."""
 
 from api.v1.views import app_views
 from flask import Blueprint
