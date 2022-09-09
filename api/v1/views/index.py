@@ -2,8 +2,13 @@
 """ This is the index file"""
 
 from api.v1.views import app_views
+<<<<<<< HEAD
 from flask import jsonify
 from models import storage
+=======
+from flask import jsonify, Flask
+from models.engine import file_storage
+>>>>>>> 8be8e3a6eee1692ee80ecfbd37aec5b6eec9314f
 
 
 @app_views.route('/status')
