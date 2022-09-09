@@ -2,7 +2,7 @@
 """ index """
 
 from api.v1.views import app_views
-from flask import jsonify
+from flask import jsonify, Flask
 from models.engine import file_storage
 
 
