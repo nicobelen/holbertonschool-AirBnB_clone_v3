@@ -19,7 +19,7 @@ def calls_storage_close(self):
 @app.errorhandler(404)
 def error_404(error):
     """ error status for paths not found """
-    msg_error = '"error": "Not found"'
+    msg_error = {"error": "Not found"}
     return jsonify(msg_error), 404
 
 
