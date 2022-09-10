@@ -2,7 +2,7 @@
 """ source code - api."""
 
 from os import getenv
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, jsonify
 from models import storage
 from api.v1.views import app_views
 
@@ -15,6 +15,10 @@ def calls_storage_close(self):
     """ closes the storage """
     storage.close()
 
+
+@app.errorhandler(404)
+def error_404(error):
+    return jsonify('"error": "Not found"'(error)), 404
 
 if __name__ == '__main__':
 
