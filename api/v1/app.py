@@ -21,6 +21,7 @@ def error_404(error):
     msg_error = '"error": "Not found"'
     return jsonify(msg_error(error)), 404
 
+
 if __name__ == '__main__':
 
     host = getenv("HBNB_API_HOST")
