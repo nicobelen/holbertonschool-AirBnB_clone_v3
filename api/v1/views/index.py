@@ -17,7 +17,7 @@ def status():
     return (jsonify({"status": "OK"}))
 
 
-@app_views.route('/stats')
+@app_views.route('/api/v1/stats')
 def stats():
     """retrieves the number of each objects by type"""
     return jsonify({"amenities": storage.count('amenities'),
