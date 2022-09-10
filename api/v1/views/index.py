@@ -25,5 +25,7 @@ def status():
 @app_views.route('/stats')
 def stats():
     """retrieves the number of each objects by type"""
-    for clas in classes.items():
-        return storage.count(clas.__class__.__name__)
+    class_dir = {}
+    for key in classes.items():
+        class_dir.update(storage.count(key))
+    return jsonify(class_dir)
