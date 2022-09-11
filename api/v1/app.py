@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" source code - api."""
+""" source code - API """
 
 from os import getenv
 from flask import Flask, Blueprint, jsonify
