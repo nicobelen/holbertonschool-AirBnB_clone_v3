@@ -23,8 +23,9 @@ def all_cities(state_id):
     else:
         city = storage.all('City')
         for ob in city.values():
-            if (ob.todict()['state_id'] == state_id):
-                cities_list.append(ob.to_dict())
+            ob_todict = ob.to_dict()
+            if (ob_todict['state_id'] == state_id):
+                cities_list.append(ob_todict)
     return jsonify(cities_list)
 
 
