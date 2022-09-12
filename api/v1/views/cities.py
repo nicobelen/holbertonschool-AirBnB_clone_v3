@@ -67,9 +67,7 @@ def create_city(state_id):
     if (dic is None):
         abort(400, "Not a JSON")
 
-    key = 'name'
-
-    if dic[key] is None:
+    if 'name' not in dic:
         abort(400, "Missing name")
 
     dic['state_id'] == state_id
@@ -93,11 +91,11 @@ def update_city(city_id):
     if (dic is None):
         abort(400, "Not a JSON")
 
-    attributes = ['id', 'state_id', 'created_at', 'updated_at']
-
     for key, value in dic.items():
-        if key not in attributes:
+        if key == 'name':
             setattr(ct, key, value)
+        else:
+            continue
 
     ct.save()
     storage.save()
