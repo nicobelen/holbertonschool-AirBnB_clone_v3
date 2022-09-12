@@ -11,14 +11,14 @@ from api.v1.views import app_views
 app_views.strict_slashes = False
 
 
-@app_views.route('/states', methods=['GET'])
-def all_states():
+@app_views.route('/states/<state_id>/cities', methods=['GET'])
+def all_cities(states_id):
     """ Retrieves the list of all State objects """
 
     st = []
 
-    for state in storage.all('State').values():
-        st.append(state.to_dict())
+    for city in storage.all('City').values():
+        st.append(city.to_dict())
 
     return jsonify(st)
 
@@ -27,7 +27,7 @@ def all_states():
 def state(state_id):
     """ Retrieves a State object """
 
-    st = storage.get(State, state_id)
+    st = storage.get(City, state_id)
 
     if (st is None):
         abort(404)
@@ -39,7 +39,7 @@ def state(state_id):
 def delete_state(state_id):
     """ Deletes a State object """
 
-    st = storage.get(State, state_id)
+    st = storage.get(City, state_id)
 
     if (st is None):
         abort(404)
@@ -64,7 +64,7 @@ def create_state():
     if dic[key] is None:
         abort(400, "Missing name")
 
-    new_state = State(name=dic['name'])
+    new_state = City(name=dic['name'])
 
     storage.save()
     return jsonify({new_state.to_dict}), 201
@@ -74,7 +74,7 @@ def create_state():
 def update_state(state_id):
     """ Updates a State object """
 
-    storag = storage.get(State, state_id)
+    storag = storage.get(City, state_id)
 
     if (storag is None):
         abort(404)
